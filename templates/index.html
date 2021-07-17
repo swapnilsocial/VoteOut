@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<title>Welcome Page</title>
+<title>VOTING ARENA</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="author" content="Swapnilsocial">
@@ -14,7 +14,7 @@ body, html {
 .bgimg {
   background-position: center;
   background-size: cover;
-  background-image: url("cat-dog.jpg");
+  background-image: url("static/mainbg.jpg");
   min-height: 75%;
 }
 
@@ -37,7 +37,7 @@ body, html {
       <a href="#menu" class="w3-button w3-block w3-blue">SAMPLE VOTING</a>
     </div>
     <div class="w3-col s3">
-      <a href="#where" class="w3-button w3-block w3-blue">CREATE VOTE</a>
+      <a href="#where" class="w3-button w3-block w3-blue">CREATE POLLING</a>
     </div>
   </div>
 </div>
@@ -45,7 +45,7 @@ body, html {
 <!-- Header with image -->
 <header class="bgimg w3-display-container w3-grayscale-min" id="home">
   <div class="w3-display-middle w3-center">
-    <span class="w3-text-green" style="font-size:90px">VOTING<br>ARENA</span>
+    <span class="w3-text-red" style="font-size:90px">VOTING<br>ARENA</span>
   </div>
   <div class="w3-display-bottomleft w3-center w3-padding-large">
     <span class="w3-text-red"> Vote your heart out..!</span>
@@ -62,11 +62,11 @@ body, html {
 <div class="w3-container" id="about">
   <div class="w3-content" style="max-width:700px">
     <label><h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide w3-text-yellow">WHAT IS VOTING ARENA?</span></h5></label>
-    <p class="w3-text-red">Voting Arena is a simple website which allows user to vote between two choices. The choices are provided by admin and the other users can vote after registration</p>
-    <p class="w3-text-red"><pre class="w3-text-red">Few example for voting options:
+    <p class="w3-text-red">Voting Arena is a simple website which allows user to vote between two or more choices. The choices are provided by admin and the other users can vote after registration</p>
+    <p class="w3-text-red"><pre class="w3-text-orange">Few example for voting options:
       1. Planning trips for large groups
-      2. Planning food outlet for vacation
-      3. Voting for president,lead,manager and so on</pre>
+      2. Planning food outlet for team party
+      3. Voting for best drink</pre>
     </p>
     <p class="w3-text-red">This fun app allows you to do much more</p>
 </div>
@@ -76,24 +76,25 @@ body, html {
   <div class="w3-content" style="max-width:700px">
 
     <h5 class="w3-center w3-padding-48"><span class="w3-tag w3-wide w3-text-yellow">VOTE FOR YOUR FAVOURITE PET</span></h5>
-    <img src=".jpg" style="width:100%;max-width:1000px;margin-top:32px;">
+    <p class="w3-text-red"><span class="w3-tag">Note!</span> This is just an illustration to show how Voting works...!!</p>
+    <p><strong class="w3-text-green">To goto voting page, click this image......</strong> </p>
+  <img id="pets" src="{{ url_for('static', filename='catdog.jpg')}}" style="width:100%;max-width:1000px;margin-top:32px;">
   </div>
 </div>
 
 <!-- Contact/Area Container -->
 <div class="w3-container" id="where" style="padding-bottom:32px;">
   <div class="w3-content" style="max-width:700px">
-    <h5 class="w3-center w3-padding-48"><span class="w3-tag w3-wide">WHERE TO FIND US</span></h5>
-    <p>Find us at some address at some place.</p>
-    <img src="/w3images/map.jpg" class="w3-image" style="width:100%">
-    <p><span class="w3-tag">FYI!</span> We offer full-service catering for any event, large or small. We understand your needs and we will cater the food to satisfy the biggerst criteria of them all, both look and taste.</p>
-    <p><strong>Reserve</strong> a table, ask for today's special or just send us a message:</p>
+    <h5 class="w3-center w3-padding-48"><span class="w3-tag w3-wide">CREATE YOUR OWN VOTING SCENARIOS</span></h5>
+    <p class="w3-text-green">To create you own voting scenarios, fill this registration form and follow these three simple instructions...</p>
+    <img src="{{ url_for('static', filename='think.jpg')}}" class="w3-image" style="width:100%">
+    <p class="w3-text-green"><span class="w3-tag" >Note!</span>Below information is mandatory for using Voting application</p>
     <form action="/action_page.php" target="_blank">
-      <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Name" required name="Name"></p>
-      <p><input class="w3-input w3-padding-16 w3-border" type="number" placeholder="How many people" required name="People"></p>
-      <p><input class="w3-input w3-padding-16 w3-border" type="datetime-local" placeholder="Date and time" required name="date" value="2020-11-16T20:00"></p>
-      <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Message \ Special requirements" required name="Message"></p>
-      <p><button class="w3-button w3-black" type="submit">SEND MESSAGE</button></p>
+      <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Enter your Name" required name="Name"></p>
+      <p><input class="w3-input w3-padding-16 w3-border" type="number" placeholder="Select many voting options?" required name="People"></p>
+      <p><input class="w3-input w3-padding-16 w3-border" type="email" placeholder="Your email" required name="date" value="abc@example.com"></p>
+      <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Senario Definition" required name="Message"></p>
+      <p><button class="w3-button w3-black" type="submit">CREATE POLLING</button></p>
     </form>
   </div>
 </div>
@@ -102,27 +103,30 @@ body, html {
 </div>
 
 <!-- Footer -->
-<footer class="w3-center w3-light-grey w3-padding-48 w3-large">
-  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-text-green">w3.css</a></p>
-</footer>
-
-<script>
-// Tabbed Menu
-function openMenu(evt, menuName) {
-  var i, x, tablinks;
-  x = document.getElementsByClassName("menu");
-  for (i = 0; i < x.length; i++) {
-    x[i].style.display = "none";
-  }
-  tablinks = document.getElementsByClassName("tablink");
-  for (i = 0; i < x.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace(" w3-dark-grey", "");
-  }
-  document.getElementById(menuName).style.display = "block";
-  evt.currentTarget.firstElementChild.className += " w3-dark-grey";
-}
-document.getElementById("myLink").click();
+<script type="text/javascript">
+    document.getElementById("pets").onclick = function () {
+        location.href = "{{ url_for('vote_pets')}}";
+    };
 </script>
-
+</div>
+   <footer class="footer footer-default">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <a target="_blank" rel="noopener" title="Linkedin ID" href='@swapnilsocial'>
+                    </a>
+                    <a target="_blank" rel="noopener" title="Github url" href='https://github.com/swapnilsocial/VoteOut/tree/dev'>
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 text-center">
+                    <div class="copyright w3-center" >
+                       VoteOut v1.0.0
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
