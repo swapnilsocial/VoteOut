@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<title>VOTING ARENA</title>
+<title>Voting Result</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="author" content="Swapnilsocial">
@@ -23,24 +23,6 @@ body, html {
 }
 </style>
 <body>
-
-<!-- Links (sit on top) -->
-<div class="w3-top">
-  <div class="w3-row w3-padding w3-black">
-    <div class="w3-col s3">
-      <a href="#" class="w3-button w3-block w3-blue">HOME</a>
-    </div>
-    <div class="w3-col s3">
-      <a href="#about" class="w3-button w3-block w3-blue">INTRO</a>
-    </div>
-    <div class="w3-col s3">
-      <a href="#menu" class="w3-button w3-block w3-blue">SAMPLE VOTING</a>
-    </div>
-    <div class="w3-col s3">
-      <a href="#where" class="w3-button w3-block w3-blue">CREATE POLLING</a>
-    </div>
-  </div>
-</div>
 
 <!-- Header with image -->
 <header class="bgimg w3-display-container w3-grayscale-min" id="home">
@@ -81,11 +63,6 @@ body, html {
   <img id="pets" src="{{ url_for('static', filename='catdog.jpg')}}" style="width:100%;max-width:1000px;margin-top:32px;">
   </div>
 </div>
-<script type="text/javascript">
-        document.getElementById("pets").onclick = function () {
-        location.href = "{{ url_for('vote_pets')}}";
-    };
-</script>
 
 <!-- Contact/Area Container -->
 <div class="w3-container" id="where" style="padding-bottom:32px;">
@@ -108,7 +85,8 @@ body, html {
 </div>
 
 <!-- Footer -->
-
+<script type="text/javascript">
+</script>
 </div>
    <footer class="footer footer-default">
         <div class="container">
