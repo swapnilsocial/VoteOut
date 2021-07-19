@@ -43,9 +43,11 @@ def dog_status():
 
 @app.route('/create_polling', methods=['POST', 'GET'])
 def create_polling():
-    name=request.form.get('poll')
-    print(name)
-    return "work in progress...!!!"
+    uname=request.form.get('Name')
+    poll=request.form.get('poll')
+    contestants=request.form.get('contestants')
+    email=request.form.get('email')
+    return "hi {}! Work in progress...!!!".format(uname)
 
 @app.route('/')
 def server_status():
