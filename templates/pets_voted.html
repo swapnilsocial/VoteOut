@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>CAT vs DOG</title>
+    <base href="/index.html">
+    <meta name = "viewport" content = "width=device-width, initial-scale = 1.0">
+    <meta name="keywords" content="docker-compose, docker, stack">
+    <meta name="author" content="Swapnilsocial">
+    <link rel='stylesheet' href="{{ url_for('static',filename='style.css') }}" />
+  </head>
+  <body>
+  <style>
+body, html {
+  height: 100%;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+.bgimg {
+  background-position: center;
+  background-size: cover;
+  background-image: url("static/mainbg.jpg");
+  min-height: 75%;
+}
+
+.menu {
+  display: none;
+}
+
+.blink {
+        color: #e81548
+        animation: blink-animation 1s steps(5, start) infinite;
+        -webkit-animation: blink-animation 1s steps(5, start) infinite;
+      }
+      @keyframes blink-animation {
+        to {
+          visibility: hidden;
+        }
+      }
+      @-webkit-keyframes blink-animation {
+        to {
+          visibility: hidden;
+        }
+      }
+
+</style>
+    <div id="content-container">
+      <div id="content-container-center">
+        <h3>Which is your favourite Pet?</h3>
+        <form id="choice" name='form' >
+          <button id="kitty" type="submit" name="kitty" class="b" value=1 disabled>CAT</button>
+          <button id="doggy" type="submit" name="doggy" class="b" value=1 disabled>DOG</button>
+        </form>
+        <div id="tip">
+          (Tip: you cannot vote again)
+        </div>
+        <div id="hostname">
+ <!--         Processed by container ID {{hostname}} -->
+        </div>
+        <div style="color:blue">
+          {{ voted }} <br></br>
+            <span class="blink" style="color:red">{{ vote_stat }}</span>
+        </div>
+      </div>
+    </div>
+<script type="text/javascript">
+</script>
+
+  </body>
+</html>

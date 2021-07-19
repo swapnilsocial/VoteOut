@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<title>Voting Result</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Swapnilsocial">
+<link rel="stylesheet" href="{{ url_for('static',filename='formats.css')}}">
+<style>
+body, html {
+  height: 100%;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+.bgimg {
+  background-position: center;
+  background-size: cover;
+  background-image: url("static/mainbg.jpg");
+  min-height: 75%;
+}
+
+.menu {
+  display: none;
+}
+</style>
+<body>
+
+<!-- Header with image -->
+<header class="bgimg w3-display-container w3-grayscale-min" id="home">
+  <div class="w3-display-middle w3-center">
+    <span class="w3-text-red" style="font-size:90px">VOTING<br>ARENA</span>
+  </div>
+  <div class="w3-display-bottomleft w3-center w3-padding-large">
+    <span class="w3-text-red"> Vote your heart out..!</span>
+  </div>
+    <div class="w3-display-bottomright w3-center w3-padding-large">
+    <span class="w3-text-orange"> Voting is your fundamental right!!</span>
+  </div>
+</header>
+
+<!-- Add a background color and large text to the whole page -->
+<div class="w3-sand w3-grayscale w3-large">
+
+<!-- About Container -->
+<div class="w3-container" id="about">
+  <div class="w3-content" style="max-width:700px">
+    <label><h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide w3-text-yellow">WHAT IS VOTING ARENA?</span></h5></label>
+    <p class="w3-text-red">Voting Arena is a simple website which allows user to vote between two or more choices. The choices are provided by admin and the other users can vote after registration</p>
+    <p class="w3-text-red"><pre class="w3-text-orange">Few example for voting options:
+      1. Planning trips for large groups
+      2. Planning food outlet for team party
+      3. Voting for best drink</pre>
+    </p>
+    <p class="w3-text-red">This fun app allows you to do much more</p>
+</div>
+
+<!-- Menu Container -->
+<div class="w3-container" id="menu">
+  <div class="w3-content" style="max-width:700px">
+
+    <h5 class="w3-center w3-padding-48"><span class="w3-tag w3-wide w3-text-yellow">VOTE FOR YOUR FAVOURITE PET</span></h5>
+    <p class="w3-text-red"><span class="w3-tag">Note!</span> This is just an illustration to show how Voting works...!!</p>
+    <p><strong class="w3-text-green">To goto voting page, click this image......</strong> </p>
+  <img id="pets" src="{{ url_for('static', filename='catdog.jpg')}}" style="width:100%;max-width:1000px;margin-top:32px;">
+  </div>
+</div>
+
+<!-- Contact/Area Container -->
+<div class="w3-container" id="where" style="padding-bottom:32px;">
+  <div class="w3-content" style="max-width:700px">
+    <h5 class="w3-center w3-padding-48"><span class="w3-tag w3-wide">CREATE YOUR OWN VOTING SCENARIOS</span></h5>
+    <p class="w3-text-green">To create you own voting scenarios, fill this registration form and follow these three simple instructions...</p>
+    <img src="{{ url_for('static', filename='think.jpg')}}" class="w3-image" style="width:100%">
+    <p class="w3-text-green"><span class="w3-tag" >Note!</span>Below information is mandatory for using Voting application</p>
+    <form action="/action_page.php" target="_blank">
+      <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Enter your Name" required name="Name"></p>
+      <p><input class="w3-input w3-padding-16 w3-border" type="number" placeholder="Select many voting options?" required name="People"></p>
+      <p><input class="w3-input w3-padding-16 w3-border" type="email" placeholder="Your email" required name="date" value="abc@example.com"></p>
+      <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Senario Definition" required name="Message"></p>
+      <p><button class="w3-button w3-black" type="submit">CREATE POLLING</button></p>
+    </form>
+  </div>
+</div>
+
+<!-- End page content -->
+</div>
+
+<!-- Footer -->
+<script type="text/javascript">
+</script>
+</div>
+   <footer class="footer footer-default">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <a target="_blank" rel="noopener" title="Linkedin ID" href='@swapnilsocial'>
+                    </a>
+                    <a target="_blank" rel="noopener" title="Github url" href='https://github.com/swapnilsocial/VoteOut/tree/dev'>
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 text-center">
+                    <div class="copyright w3-center" >
+                       VoteOut v1.0.0
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
