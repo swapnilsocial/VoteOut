@@ -54,4 +54,4 @@ def server_status():
     return "Server is running at http://127.0.0.1:5000/voteout!"
 
 
-app.run(debug=True)
+app.run(debug=True, host='0.0.0.0', port=8025)
