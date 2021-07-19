@@ -31,11 +31,11 @@ body, html {
     <div id="content-container">
       <div id="content-container-center">
         <h3>Which is your favourite Pet?</h3>
-        <form id="choice" name='catform' method="post" action="/voteout/cat/status">
-          <button id="kitty" type="submit" class="a" >CAT</button>
-        </form>
-        <form id="choice" name='dogform' method="post" action="/voteout/dog/status">
-          <button id="doggy" type="submit" class="a" >DOG</button>
+        <form id="choice"  method="post" action="/voteout/cat/status">
+          <button value="kitty" type="submit" name="action" class="a" >CAT</button>
+          </form>
+        <form id="choice"  method="post" action="/voteout/dog/status">
+          <button value="doggy" type="submit" name="action" class="a" >DOG</button>
         </form>
         <div id="tip">
           (Tip: you can vote just once)

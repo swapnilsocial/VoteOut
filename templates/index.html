@@ -92,14 +92,14 @@ body, html {
   <div class="w3-content" style="max-width:700px">
     <h5 class="w3-center w3-padding-48"><span class="w3-tag w3-wide">CREATE YOUR OWN VOTING SCENARIOS</span></h5>
     <p class="w3-text-green">To create you own voting scenarios, fill this registration form and follow these three simple instructions...</p>
-    <img src="{{ url_for('static', filename='think.jpg')}}" class="w3-image" style="width:100%">
+    <img src="{{ url_for('static', filename='wip.jpg')}}" class="w3-image" style="width:100%">
     <p class="w3-text-green"><span class="w3-tag" >Note!</span>Below information is mandatory for using Voting application</p>
-    <form action="/action_page.php" target="_blank">
+    <form action="/create_polling" target="_blank" method="post">
       <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Enter your Name" required name="Name"></p>
-      <p><input class="w3-input w3-padding-16 w3-border" type="number" placeholder="Select many voting options?" required name="People"></p>
-      <p><input class="w3-input w3-padding-16 w3-border" type="email" placeholder="Your email" required name="date" value="abc@example.com"></p>
-      <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Senario Definition" required name="Message"></p>
-      <p><button class="w3-button w3-black" type="submit">CREATE POLLING</button></p>
+      <p><input class="w3-input w3-padding-16 w3-border" type="number" placeholder="How many voting options/contestants?" required name="contestants"></p>
+      <p><input class="w3-input w3-padding-16 w3-border" type="email" placeholder="Your email" required name="email" value="abc@example.com"></p>
+      <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Senario Definition" required name="poll"></p>
+      <p><button class="w3-button w3-black" type="submit">CREATE YOUR OWN POLLING</button></p>
     </form>
   </div>
 </div>

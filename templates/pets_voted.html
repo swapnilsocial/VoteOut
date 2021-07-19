@@ -27,6 +27,22 @@ body, html {
   display: none;
 }
 
+.blink {
+        color: #e81548
+        animation: blink-animation 1s steps(5, start) infinite;
+        -webkit-animation: blink-animation 1s steps(5, start) infinite;
+      }
+      @keyframes blink-animation {
+        to {
+          visibility: hidden;
+        }
+      }
+      @-webkit-keyframes blink-animation {
+        to {
+          visibility: hidden;
+        }
+      }
+
 </style>
     <div id="content-container">
       <div id="content-container-center">
@@ -41,8 +57,9 @@ body, html {
         <div id="hostname">
  <!--         Processed by container ID {{hostname}} -->
         </div>
-        <div>
-          {{ voted }}
+        <div style="color:blue">
+          {{ voted }} <br></br>
+            <span class="blink" style="color:red">{{ vote_stat }}</span>
         </div>
       </div>
     </div>
