@@ -10,7 +10,13 @@
     <link rel='stylesheet' href="{{ url_for('static',filename='style.css') }}" />
       <link rel="stylesheet" href="{{ url_for('static',filename='formats.css')}}">
   </head>
-  <body>
+      <script type="text/javascript">
+        window.history.forward();
+        function noBack() {
+            window.history.forward();
+        }
+    </script>
+<body onload="noBack();" onpageshow="if (event.persisted) noBack();" onunload="">
   <style>
 body, html {
   height: 100%;

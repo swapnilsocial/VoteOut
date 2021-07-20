@@ -48,7 +48,8 @@ def create_polling():
 
 @app.route('/')
 def server_status():
-    return "Server is running at http://127.0.0.1:5000/voteout!"
+    return "Server is running!"
+
 
 
 if __name__ == '__main__':
