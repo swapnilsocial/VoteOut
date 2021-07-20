@@ -8,6 +8,7 @@
     <meta name="keywords" content="docker-compose, docker, stack">
     <meta name="author" content="Swapnilsocial">
     <link rel='stylesheet' href="{{ url_for('static',filename='style.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static',filename='formats.css')}}">
   </head>
   <body>
   <style>
@@ -19,7 +20,7 @@ body, html {
 .bgimg {
   background-position: center;
   background-size: cover;
-  background-image: url("static/mainbg.jpg");
+  background-image: url("static/catdog.jpg");
   min-height: 75%;
 }
 
@@ -44,27 +45,45 @@ body, html {
       }
 
 </style>
-    <div id="content-container">
+    <div id="content-container" class="bgimg">
       <div id="content-container-center">
         <h3>Which is your favourite Pet?</h3>
         <form id="choice" name='form' >
           <button id="kitty" type="submit" name="kitty" class="b" value=1 disabled>CAT</button>
           <button id="doggy" type="submit" name="doggy" class="b" value=1 disabled>DOG</button>
         </form>
+          <br/><br/><br/><br/>
         <div id="tip">
-          (Tip: you cannot vote again)
+          <p>(Tip: you cannot vote again)<p>
         </div>
-        <div id="hostname">
- <!--         Processed by container ID {{hostname}} -->
+          <div></div>
+        <div>
+<h3><span class="blink" style="background-color: orange">{{ voted }}</span></h3>
         </div>
-        <div style="color:blue">
-          {{ voted }} <br></br>
-            <span class="blink" style="color:red">{{ vote_stat }}</span>
-        </div>
+          <br/><br/>
+<div>
+ <marquee direction="left" height="60" width="1000" bgcolor="gray"><h3><span style="color:brown">{{ vote_stat }}</span></h3></marquee>
+ </div>
       </div>
     </div>
 <script type="text/javascript">
 </script>
-
+   <footer class="footer footer-default">
+        <div class="container">
+            <div class="copyright w3-center">
+  <p>Author: Swapnil Joshi<br>
+  <a href="mailto:hege@example.com">swapniljoshisj20@gmail.com</a><br>
+  <a href="https://github.com/swapnilsocial">github@swapnilsocial</a><br>
+  <a href="https://www.linkedin.com/in/swapnilsocial">linkedin@swapnilsocial</a></p>
+            </div>
+            <div class="row">
+                <div class="col-12 text-center">
+                    <div class="copyright w3-center" >
+                       VoteOut v1.0.0
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
   </body>
 </html>
