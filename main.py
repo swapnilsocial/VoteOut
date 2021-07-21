@@ -1,5 +1,11 @@
+import json
+import os
 
-print("Voting is your right")
+USER_FOLDER = os.path.dirname(os.path.abspath(__file__))
+user_home = os.path.join(USER_FOLDER+"/templates/users", "")
 
+def new_user_readiness(uname='default'):
+    folder_name=user_home + uname
+    os.mkdir(folder_name)
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+new_user_readiness("Swapnil")

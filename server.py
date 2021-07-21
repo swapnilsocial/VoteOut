@@ -39,12 +39,20 @@ def cat_status():
 
 @app.route('/create_polling', methods=['POST', 'GET'])
 def create_polling():
-    uname = request.form.get('Name')
-    poll = request.form.get('poll')
-    contestants = request.form.get('contestants')
-    email = request.form.get('email')
-    return "hi {}! Work in progress...!!!".format(uname)
+    uname = request.form.get('Name').lower()
+    title = request.form.get('title')
+    theme = request.form.get('theme')
+    contestants = int(request.form.get('contestants'))
+    poll_key=uname+"_"+theme+"_"+str(contestants)
+    user_status=vfs.get_user_details(uname)
+    return render_template('create_polling.html', uname=uname, user_status=user_status, poll_key=poll_key, title=title)
 
+@app.route('/<uname>/<poll_key>/votenow', methods=['GET'])
+def vote_now(uname, poll_key):
+    uname=uname
+    poll_key=poll_key
+    #write logic of a dynamic template here
+    return "Vote now for {}".format(poll_key)
 
 @app.route('/')
 def server_status():
