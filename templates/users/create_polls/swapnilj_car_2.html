@@ -40,7 +40,9 @@ body, html {
       <div id="content-container-center">
         <h1 style="color: red">{{  user_status }} </h1>
     <form id="choice" method="post" action="/{{  uname  }}/ {{ poll_key }}/ {{  title  }}/votenow" target="_blank">
-    magic_template_replace_here
+     <p style="color:red"><span style="background-color:#00FF00">Contestant 1 : </span><input class="a" type="text" required name="text_title1"></p> 
+     <p style="color:red"><span style="background-color:#00FF00">Contestant 2 : </span><input class="a" type="text" required name="text_title2"></p> 
+    
  <!--         <input type="file" id="myFile" name="filename"><br/><br/><br/><br/> -->
       <button value="{{  poll_key  }}" type="submit" name="pet" class="a" style="color: blue">CREATE POLLING</button>
     </form>

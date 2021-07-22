@@ -1,11 +1,11 @@
 import json
-import os
+import os,shutil
+
+#create_vote_template():
 
 USER_FOLDER = os.path.dirname(os.path.abspath(__file__))
 user_home = os.path.join(USER_FOLDER+"/templates/users", "")
-
-def new_user_readiness(uname='default'):
-    folder_name=user_home + uname
-    os.mkdir(folder_name)
-
-new_user_readiness("Swapnil")
+abc='abc.html'
+poll_user_home = os.path.join(USER_FOLDER + "/templates/users/create_polls", abc)
+base_create_poll_template = os.path.join(USER_FOLDER+"/templates", "create_polling.html")
+shutil.copy(base_create_poll_template, poll_user_home)
