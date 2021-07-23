@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-<title>POLLING</title>
+<title>VOTE IT</title>
 <base href="/index.html">
 <meta name = "viewport" content = "width=device-width, initial-scale = 1.0">
 <meta name="keywords" content="docker-compose, docker, stack">
@@ -38,14 +38,17 @@ body, html {
 
     <div id="content-container" class="bgimg">
       <div id="content-container-center">
-        <h1 style="color: red">{{  user_status }} </h1><br>
           <h3 class="textfield" >{{  title  }}</h3>
-    <form id="choice" method="post" action="/{{  uname  }}/{{ poll_key }}/{{  title  }}/votenow">
-    magic_template_replace_here
+    <form id="choice" method="post" action="/{{  uname  }}/{{ poll_key }}/{{  title  }}/vote">
+    <button value="TAJ" type="submit" name="elector" class="a" >TAJ</button></br>
+    <button value="HOLIDAY INN" type="submit" name="elector" class="a" >HOLIDAY INN</button></br>
+    
  <!--         <input type="file" id="myFile" name="filename"><br/><br/><br/><br/> -->
-      <button value="{{  poll_key  }}" type="submit" name="pet" class="a" style="color: blue">CREATE POLLING</button>
     </form>
-
+                  <br/><br/><br/><br/>
+        <div id="tip">
+          (Tip: you can vote just once)
+        </div>
         <div id="hostname">
  <!--         Processed by container ID {{hostname}} -->
         </div>

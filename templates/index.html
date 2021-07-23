@@ -64,7 +64,7 @@ body, html {
   <div class="w3-content" style="max-width:700px">
     <label><h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide w3-text-yellow">WHAT IS VOTING ARENA?</span></h5></label>
     <p class="w3-text-red">Voting Arena is a simple website which allows user to vote between two or more choices.
-        The choices are provided by admin and the other users can vote after registration.s</p>
+        The choices are provided by admin and the other users can vote after registration.</p>
     <p class="w3-text-red">This fun app allows you to select a theme background or customize your own.</p>
 </div>
 
@@ -92,8 +92,8 @@ body, html {
     <img src="{{ url_for('static', filename='wip.jpg')}}" class="w3-image" style="width:100%">
     <p class="w3-text-green"><span class="w3-tag" >Note!</span>Below information is mandatory for using Voting application</p>
     <form action="/create_polling" target="_blank" method="post">
-      <p style="color:red">Username: <input class="w3-input w3-padding-16 w3-border" type="text" placeholder="No spaces or special characters except _ . - are allowed" required name="Name"  required pattern="[0-9a-zA-Z_.-]*" minlength="8"></p>
-      <p style="color:red">Theme :<select class="w3-input w3-padding-16 w3-border" type="select" placeholder="Select voting theme"required name="theme">
+      <p style="color:red">Username: <input class="w3-input w3-border" type="text" placeholder="No spaces or special characters except _ . - are allowed" required name="Name"  required pattern="[0-9a-zA-Z_.-]*" minlength="8"></p>
+      <p style="color:red">Theme :<select class="w3-input w3-border" type="select" placeholder="Select voting theme"required name="theme">
           <option value="default">default</option>
           <option value="beverage">beverage</option>
           <option value="car">car</option>
@@ -104,10 +104,11 @@ body, html {
           <option value="resort">resort</option>
           <option value="restaurant">restaurant</option>
           <option value="sport">sport</option>
+          <option value="superhero">superhero</option>
           <option value="team">team</option>
         <option value="others">others</option>
       </select></p>
-      <p style="color:red">Voting scenario description: <input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Voting Theme Title" required name="title"></p>
+      <p style="color:red">Voting scenario description: <input class="w3-input w3-border" type="text" placeholder="Tea vs Coffee vs Coke" required name="title"></p>
      <p style="color:red">Nominee Count - &emsp;<input type="radio" name="contestants" value="2" checked> 2
      <input type="radio" name="contestants" value="3"> 3
          <input type="radio" name="contestants" value="4"> 4 </p>

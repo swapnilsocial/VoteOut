@@ -1,28 +1,27 @@
 import json
-import os, shutil
+import os
+import shutil
 import re
 
+## define all path variables here.
 USER_FOLDER = os.path.dirname(os.path.abspath(__file__))
 vote_file = os.path.join(USER_FOLDER, 'votes.json')
 users_file = os.path.join(USER_FOLDER + "/all_users", 'users.json')
 template_user_home = os.path.join(USER_FOLDER + "/templates/users", "")
 static_user_home = os.path.join(USER_FOLDER + "/static/users", "")
 base_create_poll_template = os.path.join(USER_FOLDER + "/templates", "create_polling.html")
+base_create_vote_template = os.path.join(USER_FOLDER + "/templates", "polling_vote.html")
+base_create_status_template = os.path.join(USER_FOLDER + "/templates", "polling_status.html")
 
 
+# fetch sample votes
 def update_votes(cat_votes, dog_votes):
     D = {'cats': cat_votes, 'dogs': dog_votes}
     with open(vote_file, 'w')as f:
         json.dump(D, f)
 
 
-def new_user_readiness(uname='default'):
-    template_folder_name = template_user_home + uname
-    os.mkdir(template_folder_name)
-    static_folder_home = static_user_home + uname
-    os.mkdir(static_folder_home)
-
-
+# fetch votes for demo and reflect back
 def current_votes():
     with open(vote_file) as v:
         v1 = json.load(v)
@@ -32,6 +31,15 @@ def current_votes():
         return cat_votes, dog_votes, total_votes
 
 
+# set paths and folders for NEW user
+def new_user_readiness(uname='default'):
+    template_folder_name = template_user_home + uname
+    os.mkdir(template_folder_name)
+    static_folder_home = static_user_home + uname
+    os.mkdir(static_folder_home)
+
+
+# check user status and call other functions for new users
 def get_user_details(uname):
     user_details = uname.lower()
     with open(users_file) as uf:
@@ -57,18 +65,80 @@ def replace(file_path, text, subs, flags=0):
         file.write(file_contents)
 
 
-def create_poll_template(n, pk):
+# this function will create the templates for designing user voting scenario
+def create_poll_template(n, pk, uname):
     n = n + 1
-    template = ''' <p style="color:red"><span style="background-color:#00FF00">Contestant {} : </span><input class="a" type="text" required name="text_title{}"></p> 
+    uname = uname
+    template = ''' <span class="textfield" >Contestant {}</span> <input type="text" required name="text_title{}"></br>
     '''
     magic_list = []
     for i in range(1, n):
-        magic_list.append(template.format(i,i))
+        magic_list.append(template.format(i, i))
     poll_template = ''''''
     for i in range(len(magic_list)):
         poll_template = poll_template + magic_list[i]
     pk = pk + '.html'
-    poll_user_home = os.path.join(USER_FOLDER + "/templates/users/create_polls", pk)
+    poll_user_home = os.path.join(USER_FOLDER + "/templates/users/" + uname, pk)
     shutil.copy(base_create_poll_template, poll_user_home)
     replace(poll_user_home, 'magic_template_replace_here', poll_template)
     return pk
+
+
+# create user data dictionary and updated for each run
+def update_votes_dynamic(uname, poll_key, user_dictionary):
+    user_dictionary = user_dictionary
+    dynamic_vote_file = os.path.join(USER_FOLDER + "/static/users/" + uname, poll_key + '.json')
+    with open(dynamic_vote_file, 'w')as f:
+        json.dump(user_dictionary, f)
+
+
+def dynamic_vote_template(pk, uname, list_con):
+    list_con = list_con
+    n = len(list_con)
+    uname = uname
+    template = '''<button value="{}" type="submit" name="elector" class="a" >{}</button></br>
+    '''
+    magic_list = []
+    for i in range(0, n):
+        v = list_con[i]
+        magic_list.append(template.format(v, v))
+    voter_template = ''''''
+    for i in range(len(magic_list)):
+        voter_template = voter_template + magic_list[i]
+    print(voter_template)
+    pk = pk + '_vote.html'
+    print(pk)
+    poll_user_home = os.path.join(USER_FOLDER + "/templates/users/" + uname, pk)
+    shutil.copy(base_create_vote_template, poll_user_home)
+    replace(poll_user_home, 'polling_template_replace_here', voter_template)
+    return pk
+
+
+def dynamic_status_template(pk, uname, list_con):
+    list_con = list_con
+    n = len(list_con)
+    uname = uname
+    template = '''<button value="{}" type="submit" name="elector" class="a" >{}</button></br>
+    '''
+    magic_list = []
+    for i in range(0, n):
+        v = list_con[i]
+        magic_list.append(template.format(v, v))
+    voter_template = ''''''
+    for i in range(len(magic_list)):
+        voter_template = voter_template + magic_list[i]
+    print(voter_template)
+    pk = pk + '_vote.html'
+    print(pk)
+    poll_user_home = os.path.join(USER_FOLDER + "/templates/users/" + uname, pk)
+    shutil.copy(base_create_vote_template, poll_user_home)
+    replace(poll_user_home, 'polling_template_replace_here', voter_template)
+    return pk
+
+
+def fetch_page_stats_from_json(PAGE_HOME):
+    vote_json = PAGE_HOME
+    with open(vote_json) as v:
+        v1 = json.load(v)
+
+        return "in progress"

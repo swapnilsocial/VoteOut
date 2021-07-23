@@ -12,6 +12,7 @@ html,body{
   height: 100vh;
   font-family: 'Open Sans';
   overflow-x: hidden;
+
 }
 
 button{
@@ -49,6 +50,20 @@ button.b{
   padding-right:8px;
   text-align:center
 }
+
+
+.textfield{
+  text-align: center;
+  font-size: 25px;
+  color:#bb14c6;
+  background-color: cyan;
+  font-weight:bold;
+  padding-left:8px;
+  padding-right:8px;
+  text-align:center
+}
+
+
 
 #hostname{
   position: absolute;
@@ -121,6 +136,20 @@ button.b{
 
 #choice button.b:focus{
   background-color: #00a2a1;
+}
+
+#choice input{
+  height: 40px;
+  width: 300px;
+  border: none;
+  color: red;
+  text-transform: uppercase;
+  font-size:18px;
+  font-weight: 700;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  text-align: center;
+
 }
 
 #background-stats{
@@ -218,12 +247,7 @@ dt {
   }
 }
 
-html, body {
-  height: 500px;
-  font-family: "fira-sans-2",sans-serif;
-  color: #333;
-  overflow-x: hidden;
-}
+
 
 #pets_align {
 

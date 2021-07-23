@@ -41,7 +41,9 @@ body, html {
         <h1 style="color: red">{{  user_status }} </h1><br>
           <h3 class="textfield" >{{  title  }}</h3>
     <form id="choice" method="post" action="/{{  uname  }}/{{ poll_key }}/{{  title  }}/votenow">
-    magic_template_replace_here
+     <span class="textfield" >Contestant 1</span> <input type="text" required name="text_title1"></br>
+     <span class="textfield" >Contestant 2</span> <input type="text" required name="text_title2"></br>
+    
  <!--         <input type="file" id="myFile" name="filename"><br/><br/><br/><br/> -->
       <button value="{{  poll_key  }}" type="submit" name="pet" class="a" style="color: blue">CREATE POLLING</button>
     </form>

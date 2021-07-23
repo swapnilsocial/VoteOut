@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-<title>POLLING</title>
+<title>VOTE IT</title>
 <base href="/index.html">
 <meta name = "viewport" content = "width=device-width, initial-scale = 1.0">
 <meta name="keywords" content="docker-compose, docker, stack">
@@ -38,16 +38,15 @@ body, html {
 
     <div id="content-container" class="bgimg">
       <div id="content-container-center">
-        <h1 style="color: red">{{  user_status }} </h1>
-    <form id="choice" method="post" action="/{{  uname  }}/ {{ poll_key }}/ {{  title  }}/votenow" target="_blank">
-     <p style="color:red"><span style="background-color:#00FF00">Contestant 1 : </span><input class="a" type="text" required name="text_title1"></p> 
-     <p style="color:red"><span style="background-color:#00FF00">Contestant 2 : </span><input class="a" type="text" required name="text_title2"></p> 
-     <p style="color:red"><span style="background-color:#00FF00">Contestant 3 : </span><input class="a" type="text" required name="text_title3"></p> 
-    
+          <h3 class="textfield" >{{  title  }}</h3>
+    <form id="choice" method="post" action="/{{  uname  }}/{{ poll_key }}/{{  title  }}/vote">
+    polling_template_replace_here
  <!--         <input type="file" id="myFile" name="filename"><br/><br/><br/><br/> -->
-      <button value="{{  poll_key  }}" type="submit" name="pet" class="a" style="color: blue">CREATE POLLING</button>
     </form>
-
+                  <br/><br/><br/><br/>
+        <div id="tip">
+          (Tip: you can vote just once)
+        </div>
         <div id="hostname">
  <!--         Processed by container ID {{hostname}} -->
         </div>
