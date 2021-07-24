@@ -116,11 +116,12 @@ def dynamic_vote(uname, poll_key, title):
     vote_stats = ' votes and '.join("{}: {}".format(k, v) for k, v in result.items()) + ' votes'
     # create a pie chart here
     result_file = os.path.join(USER_FOLDER + "/static/users/" + uname, poll_key + "_results.png")
+    print(all_values, all_keys)
     x = np.array(all_keys)
     y = np.array(all_values)
     plt.bar(x, y)
-    plt.show()
     plt.savefig(result_file)
+    plt.clf()
     return render_template('results_dynamic.html', status=status, title=title, theme=theme, vote_stats=vote_stats, uname=uname, poll_key=poll_key)
 
 
