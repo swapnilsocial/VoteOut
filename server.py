@@ -1,6 +1,8 @@
 from flask import Flask, render_template, Response, request
 import voteout_functions as vfs
 import os
+import matplotlib.pyplot as plt
+import numpy as np
 
 app = Flask(__name__)
 
@@ -91,14 +93,17 @@ def vote_now(uname, poll_key, title):
 @app.route('/<uname>/<poll_key>/<title>/vote', methods=['GET', 'POST'])
 def dynamic_vote(uname, poll_key, title):
     ip_address = request.remote_addr
+    theme = poll_key.split('_')[0]
+    PAGE_HOME = os.path.join(USER_FOLDER + "/static/users/" + uname, poll_key + ".json")
+    result = vfs.fetch_page_stats_from_json(PAGE_HOME)
+    updated_result = {}
+    all_values = []
+    all_keys = list(result.keys())
+    dic_len = len(all_keys)
+    # check voter stats
     if vfs.ip_check_add(uname, poll_key, ip_address):
         status = "You have voted once already"
     else:
-        PAGE_HOME = os.path.join(USER_FOLDER + "/static/users/" + uname, poll_key + ".json")
-        result = vfs.fetch_page_stats_from_json(PAGE_HOME)
-        updated_result = {}
-        all_keys = list(result.keys())
-        dic_len = len(all_keys)
         for i in range(0, dic_len):
             if request.method == 'POST':
                 if request.form['elector'] == all_keys[i]:
@@ -106,8 +111,17 @@ def dynamic_vote(uname, poll_key, title):
         result.update(updated_result)
         print(result)
         status = vfs.dynamic_vote_register(uname, poll_key, result)
-        
-    return "Requester IP: {} , Status: {}".format(ip_address, status)
+    for i in range(0, dic_len):
+        all_values.append(result.get(all_keys[i]))
+    vote_stats = ' votes and '.join("{}: {}".format(k, v) for k, v in result.items()) + ' votes'
+    # create a pie chart here
+    result_file = os.path.join(USER_FOLDER + "/static/users/" + uname, poll_key + "_results.png")
+    x = np.array(all_keys)
+    y = np.array(all_values)
+    plt.bar(x, y)
+    plt.show()
+    plt.savefig(result_file)
+    return render_template('results_dynamic.html', status=status, title=title, theme=theme, vote_stats=vote_stats, uname=uname, poll_key=poll_key)
 
 
 #

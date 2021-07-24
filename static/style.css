@@ -51,6 +51,16 @@ button.b{
   text-align:center
 }
 
+#tippi{
+  text-align: center;
+  font-size: 25px;
+  background-color:#000;
+  color:#bb14c6;
+  display:inline-block;
+  padding-left:8px;
+  padding-right:8px;
+  text-align:center
+}
 
 .textfield{
   text-align: center;

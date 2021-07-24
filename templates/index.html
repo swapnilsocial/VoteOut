@@ -88,7 +88,11 @@ body, html {
 <div class="w3-container" id="new-user" style="padding-bottom:32px;">
   <div class="w3-content" style="max-width:700px">
     <h5 class="w3-center w3-padding-48"><span class="w3-tag w3-wide">CREATE YOUR OWN VOTING SCENARIOS</span></h5>
-    <p class="w3-text-green">To create you own voting scenarios, fill this registration form and follow these three simple instructions...</p>
+    <p class="w3-text-green">To create you own voting scenarios, fill this registration form and follow these three simple instructions...
+      <p class="w3-text-green">1. Fill details, choose theme and click "CREATE YOUR OWN POLLING" button </p>
+      <p class="w3-text-green">2. Fill in Contestant details and submit</p>
+      <p class="w3-text-green">3. Share the url generated with your target audience </p>
+    </p>
     <img src="{{ url_for('static', filename='wip.jpg')}}" class="w3-image" style="width:100%">
     <p class="w3-text-green"><span class="w3-tag" >Note!</span>Below information is mandatory for using Voting application</p>
     <form action="/create_polling" target="_blank" method="post">
