@@ -92,7 +92,7 @@ def vote_now(uname, poll_key, title):
 # DYNAMIC VOTING PAGE
 @app.route('/<uname>/<poll_key>/<title>/vote', methods=['GET', 'POST'])
 def dynamic_vote(uname, poll_key, title):
-    ip_address = request.remote_addr
+    ip_address = request.environ.get('HTTP_X_REAL_IP',request.remote_addr)
     print(ip_address)
     theme = poll_key.split('_')[0]
     PAGE_HOME = os.path.join(USER_FOLDER + "/static/users/" + uname, poll_key + ".json")
