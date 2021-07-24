@@ -14,12 +14,12 @@ USER_FOLDER = os.path.dirname(os.path.abspath(__file__))
 uname='swapnilj'
 poll_key='food_3'
 PAGE_HOME = os.path.join(USER_FOLDER + "/static/users/"+uname, poll_key+".json")
-def fetch_page_stats_from_json(PAGE_HOME):
-    vote_json = PAGE_HOME
-    with open(vote_json) as v:
-        v1 = json.load(v)
-        for k,v in v1.items():
-            if k not in ("uname", "title","contestants"):
-                print(k,v)
 
-fetch_page_stats_from_json(PAGE_HOME)
+Dict={"delhi": 0, "mumbai": 0, "pune": 0}
+dic_len=len(Dict)
+all_keys= Dict.keys()
+for i in range(0, dic_len):
+        print(type(all_keys))
+#             updated_result = {all_keys[i], result.get(all_keys[i])}
+#             print(updated_result)
+# result.update(updated_result)

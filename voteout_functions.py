@@ -2,6 +2,7 @@ import json
 import os
 import shutil
 import re
+from pathlib import Path
 
 ## define all path variables here.
 USER_FOLDER = os.path.dirname(os.path.abspath(__file__))
@@ -44,7 +45,6 @@ def get_user_details(uname):
     user_details = uname.lower()
     with open(users_file) as uf:
         uf1 = json.load(uf)
-    l = len(uf1)
     if user_details in uf1:
         return "Welcome Back {}..!!".format(uname.capitalize())
     uf1.append(user_details)
@@ -69,11 +69,10 @@ def replace(file_path, text, subs, flags=0):
 def create_poll_template(n, pk, uname):
     n = n + 1
     uname = uname
-    template = ''' <span class="textfield" >Contestant {}</span> <input type="text" required name="text_title{}"></br>
-    '''
+    template = '''<span class="textfield" >Contestant {}</span> <input type="text" placeholder="type here" required name="text_title{}"></br> '''
     magic_list = []
     for i in range(1, n):
-        magic_list.append(template.format(i, i))
+        magic_list.append(template.format(i, i, i))
     poll_template = ''''''
     for i in range(len(magic_list)):
         poll_template = poll_template + magic_list[i]
@@ -105,9 +104,7 @@ def dynamic_vote_template(pk, uname, list_con):
     voter_template = ''''''
     for i in range(len(magic_list)):
         voter_template = voter_template + magic_list[i]
-    print(voter_template)
     pk = pk + '_vote.html'
-    print(pk)
     poll_user_home = os.path.join(USER_FOLDER + "/templates/users/" + uname, pk)
     shutil.copy(base_create_vote_template, poll_user_home)
     replace(poll_user_home, 'polling_template_replace_here', voter_template)
@@ -127,18 +124,50 @@ def dynamic_status_template(pk, uname, list_con):
     voter_template = ''''''
     for i in range(len(magic_list)):
         voter_template = voter_template + magic_list[i]
-    print(voter_template)
     pk = pk + '_vote.html'
-    print(pk)
     poll_user_home = os.path.join(USER_FOLDER + "/templates/users/" + uname, pk)
     shutil.copy(base_create_vote_template, poll_user_home)
     replace(poll_user_home, 'polling_template_replace_here', voter_template)
     return pk
 
 
+def ip_check_add(uname, poll_key, ip):
+    ip_path = os.path.join(static_user_home + '/' + uname, poll_key + '_ip.json')
+    if os.path.exists(ip_path):
+        pass
+    else:
+        Path(ip_path).touch()
+        with open(ip_path, 'w') as f:
+            json.dump([], f)
+    with open(ip_path) as ip_adr:
+        ip_adr1 = json.load(ip_adr)
+    if ip in ip_adr1:
+        # true means ip was found
+        return True
+    ip_adr1.append(ip)
+    with open(ip_path, 'w')as f:
+        json.dump(ip_adr1, f)
+        # False means ip was not found. User can vote
+    return False
+
+
 def fetch_page_stats_from_json(PAGE_HOME):
     vote_json = PAGE_HOME
     with open(vote_json) as v:
         v1 = json.load(v)
+        data_set = {}
+        for k, v in v1.items():
+            if k not in ("uname", "title", "contestants"):
+                data_set.update({k: v})
+    return data_set
 
-        return "in progress"
+
+def dynamic_vote_register(uname, poll_key, result):
+    user_dictionary = result
+    dynamic_vote_file = os.path.join(USER_FOLDER + "/static/users/" + uname, poll_key + '.json')
+    with open(dynamic_vote_file) as v:
+        v1 = json.load(v)
+    v1.update(user_dictionary)
+    with open(dynamic_vote_file, 'w')as f:
+        json.dump(v1, f)
+    return "Your vote is registered"

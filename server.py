@@ -1,10 +1,11 @@
-from flask import Flask, render_template, Response, request, redirect, url_for
+from flask import Flask, render_template, Response, request
 import voteout_functions as vfs
 import os
 
 app = Flask(__name__)
 
 USER_FOLDER = os.path.dirname(os.path.abspath(__file__))
+
 
 # Landing Page
 @app.route('/voteout', methods=['POST', 'GET'])
@@ -61,15 +62,14 @@ def create_polling():
 def vote_now(uname, poll_key, title):
     uname = uname
     poll_key = poll_key.strip()
-    PAGE_HOME = os.path.join(USER_FOLDER + "/static/users/" + uname, poll_key + ".json")
     num_contestants = int(poll_key.split('_')[1])
     theme = poll_key.split('_')[0]
     title = title
     contestant_dict = {}
     list_con = []
-    if os.path.isfile(PAGE_HOME):
-        vfs.fetch_page_stats_from_json(PAGE_HOME)
-        pass
+    if os.path.isfile(os.path.join(USER_FOLDER + "/templates/users/" + uname, poll_key + '_vote.html')):
+        page = '/users/' + uname + '/' + poll_key + '_vote.html'
+        return render_template(page, poll_key=poll_key, title=title, theme=theme, uname=uname)
     else:
         if request.method == 'POST':
             for i in range(1, num_contestants + 1):
@@ -81,19 +81,36 @@ def vote_now(uname, poll_key, title):
         # load data in json
         vfs.update_votes_dynamic(uname, poll_key, user_dictionary)
         vfs.dynamic_vote_template(poll_key, uname, list_con)
-        url = 'http://192.168.62.35:8025/' + uname + '/' + poll_key + '/' + title + '/votenow'
+        url = 'Share url so others can vote - http://192.168.1.9:8025/' + uname + '/' + poll_key + '/' + title + '/votenow'
         template_name = vfs.dynamic_vote_template(poll_key, uname, list_con)
         page = '/users/' + uname + '/' + template_name
-    return render_template(page, poll_key=poll_key, title=title, theme=theme, uname=uname)
+        return render_template(page, poll_key=poll_key, title=title, theme=theme, uname=uname, url=url)
 
 
 # DYNAMIC VOTING PAGE
 @app.route('/<uname>/<poll_key>/<title>/vote', methods=['GET', 'POST'])
 def dynamic_vote(uname, poll_key, title):
-    return "Vote stats to be printed here"
+    ip_address = request.remote_addr
+    if vfs.ip_check_add(uname, poll_key, ip_address):
+        status = "You have voted once already"
+    else:
+        PAGE_HOME = os.path.join(USER_FOLDER + "/static/users/" + uname, poll_key + ".json")
+        result = vfs.fetch_page_stats_from_json(PAGE_HOME)
+        updated_result = {}
+        all_keys = list(result.keys())
+        dic_len = len(all_keys)
+        for i in range(0, dic_len):
+            if request.method == 'POST':
+                if request.form['elector'] == all_keys[i]:
+                    updated_result = {all_keys[i]: result.get(all_keys[i]) + 1}
+        result.update(updated_result)
+        print(result)
+        status = vfs.dynamic_vote_register(uname, poll_key, result)
+        
+    return "Requester IP: {} , Status: {}".format(ip_address, status)
 
 
-# check server is up or not?
+#
 @app.route('/')
 def server_status():
     return "Server is up and running!"
