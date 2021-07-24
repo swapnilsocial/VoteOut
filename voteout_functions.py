@@ -143,12 +143,13 @@ def ip_check_add(uname, poll_key, ip):
         ip_adr1 = json.load(ip_adr)
     if ip in ip_adr1:
         # true means ip was found
-        return True
+        return "no"
     ip_adr1.append(ip)
+    print(ip_adr1)
     with open(ip_path, 'w')as f:
         json.dump(ip_adr1, f)
         # False means ip was not found. User can vote
-    return False
+    return "yes"
 
 
 def fetch_page_stats_from_json(PAGE_HOME):

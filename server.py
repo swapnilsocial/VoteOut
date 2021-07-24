@@ -93,6 +93,7 @@ def vote_now(uname, poll_key, title):
 @app.route('/<uname>/<poll_key>/<title>/vote', methods=['GET', 'POST'])
 def dynamic_vote(uname, poll_key, title):
     ip_address = request.remote_addr
+    print(ip_address)
     theme = poll_key.split('_')[0]
     PAGE_HOME = os.path.join(USER_FOLDER + "/static/users/" + uname, poll_key + ".json")
     result = vfs.fetch_page_stats_from_json(PAGE_HOME)
@@ -101,7 +102,7 @@ def dynamic_vote(uname, poll_key, title):
     all_keys = list(result.keys())
     dic_len = len(all_keys)
     # check voter stats
-    if vfs.ip_check_add(uname, poll_key, ip_address):
+    if vfs.ip_check_add(uname, poll_key, ip_address) == 'no':
         status = "You have voted once already"
     else:
         for i in range(0, dic_len):
