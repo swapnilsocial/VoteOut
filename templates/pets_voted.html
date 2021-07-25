@@ -7,19 +7,28 @@
     <meta name = "viewport" content = "width=device-width, initial-scale = 1.0">
     <meta name="keywords" content="docker-compose, docker, stack">
     <meta name="author" content="Swapnilsocial">
+      <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
     <link rel='stylesheet' href="{{ url_for('static',filename='style.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static',filename='formats.css')}}">
   </head>
-  <body>
+      <script type="text/javascript">
+        window.history.forward();
+        function noBack() {
+            window.history.forward();
+        }
+    </script>
+<body onload="noBack();" onpageshow="if (event.persisted) noBack();" onunload="">
   <style>
 body, html {
   height: 100%;
   font-family: 'Josefin Sans', sans-serif;
+  overflow-x: hidden;
 }
 
 .bgimg {
   background-position: center;
   background-size: cover;
-  background-image: url("static/mainbg.jpg");
+  background-image: url("static/catdog.jpg");
   min-height: 75%;
 }
 
@@ -44,27 +53,50 @@ body, html {
       }
 
 </style>
-    <div id="content-container">
+<script type = "text/javascript" >
+    function preventBack() { window.history.forward(); }
+    setTimeout("preventBack()", 0);
+    window.onunload = function () { null };
+ </script>
+    <div id="content-container" class="bgimg">
       <div id="content-container-center">
         <h3>Which is your favourite Pet?</h3>
         <form id="choice" name='form' >
           <button id="kitty" type="submit" name="kitty" class="b" value=1 disabled>CAT</button>
           <button id="doggy" type="submit" name="doggy" class="b" value=1 disabled>DOG</button>
         </form>
+          <br/><br/><br/><br/>
         <div id="tip">
-          (Tip: you cannot vote again)
+          <p>(Tip: you cannot vote again)<p>
         </div>
-        <div id="hostname">
- <!--         Processed by container ID {{hostname}} -->
+          <div></div>
+        <div>
+<h3><span class="blink" style="background-color: orange">{{ voted }}</span></h3>
         </div>
-        <div style="color:blue">
-          {{ voted }} <br></br>
-            <span class="blink" style="color:red">{{ vote_stat }}</span>
-        </div>
+          <br/><br/>
+<div>
+ <h3><span style="color:brown">{{ vote_stat }}</span></h3>
+ </div>
       </div>
     </div>
 <script type="text/javascript">
 </script>
-
+   <footer class="footer footer-default">
+        <div class="container">
+            <div class="copyright w3-center">
+  <p>Author: Swapnil Joshi<br>
+  <a href="mailto:swapniljoshisj20@gmail.com">swapniljoshisj20@gmail.com</a><br>
+  <a href="https://github.com/swapnilsocial">github@swapnilsocial</a><br>
+  <a href="https://www.linkedin.com/in/swapnilsocial">linkedin@swapnilsocial</a></p>
+            </div>
+            <div class="row">
+                <div class="col-12 text-center">
+                    <div class="copyright w3-center" >
+                       VoteOut v2.0.0
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
   </body>
 </html>

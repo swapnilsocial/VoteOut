@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+<title>VOTE IT</title>
+<base href="/index.html">
+<meta name = "viewport" content = "width=device-width, initial-scale = 1.0">
+<meta name="keywords" content="docker-compose, docker, stack">
+<meta name="author" content="Swapnilsocial">
+<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+<link rel='stylesheet' href="{{ url_for('static',filename='style.css') }}" >
+<link rel="stylesheet" href="{{ url_for('static',filename='formats.css')}}">
+        </head>
+      <script type="text/javascript">
+        window.history.forward();
+        function noBack() {
+            window.history.forward();
+        }
+    </script>
+  <body onload="noBack();" onpageshow="if (event.persisted) noBack();" onunload="">
+<style>
+body, html {
+  height: 100%;
+  font-family: 'Josefin Sans', sans-serif;
+  overflow-x: hidden;
+}
+
+.bgimg {
+  background-position: center;
+  background-size: cover;
+  background-image: url("static/themes/{{ theme }}.jpg");
+  min-height: 75%;
+}
+
+.menu {
+  display: none;
+}
+</style>
+
+    <div id="content-container" class="bgimg">
+      <div id="content-container-center">
+          <h3 class="textfield" >{{  title  }}</h3>
+    <form id="choice" method="post" action="/{{  uname  }}/{{ poll_key }}/{{  title  }}/vote">
+    polling_template_replace_here
+ <!--         <input type="file" id="myFile" name="filename"><br/><br/><br/><br/> -->
+    </form>
+                  <br/><br/><br/><br/>
+        <div id="tip">
+          (Tip: you can vote just once)
+            {{ url }}
+        </div>
+        <div id="hostname">
+ <!--         Processed by container ID {{hostname}} -->
+        </div>
+      </div>
+    </div>
+
+
+     <footer class="footer footer-default">
+        <div class="container">
+            <div class="copyright w3-center">
+  <p>Author: Swapnil Joshi<br>
+  <a href="mailto:swapniljoshisj20@gmail.com">swapniljoshisj20@gmail.com</a><br>
+  <a href="https://github.com/swapnilsocial">github@swapnilsocial</a><br>
+  <a href="https://www.linkedin.com/in/swapnilsocial">linkedin@swapnilsocial</a></p>
+            </div>
+            <div class="row">
+                <div class="col-12 text-center">
+                    <div class="copyright w3-center" >
+                       VoteOut v2.0.0
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

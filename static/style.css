@@ -11,16 +11,19 @@ html,body{
   background-color: #ff7733
   height: 100vh;
   font-family: 'Open Sans';
+  overflow-x: hidden;
+
 }
 
 button{
-  border-radius: 0;
-  width: 100%;
-  height: 50%;
+  border-radius: 2;
+  width: 20%;
+  height: 100%;
+  cursor: pointer;
 }
 
 button[type="submit"] {
-  -webkit-appearance:none; -webkit-border-radius:0;
+  -webkit-appearance:none; -webkit-border-radius:1;
 }
 
 button i{
@@ -38,9 +41,36 @@ button.b{
 }
 
 #tip{
-  text-align: left;
-  color: #c0c9ce;
+  text-align: center;
   font-size: 14px;
+  background-color:#000;
+  color:#bb14c6;
+  display:inline-block;
+  padding-left:8px;
+  padding-right:8px;
+  text-align:center
+}
+
+#tippi{
+  text-align: center;
+  font-size: 25px;
+  background-color:#000;
+  color:#bb14c6;
+  display:inline-block;
+  padding-left:8px;
+  padding-right:8px;
+  text-align:center
+}
+
+.textfield{
+  text-align: center;
+  font-size: 25px;
+  color:#bb14c6;
+  background-color: cyan;
+  font-weight:bold;
+  padding-left:8px;
+  padding-right:8px;
+  text-align:center
 }
 
 #hostname{
@@ -58,8 +88,8 @@ button.b{
   margin: 0 auto;
   display: table;
   padding: 10px;
-  max-width: 940px;
-  height: 100%;
+  width: 80%;
+  height: 80%;
 }
 #content-container-center{
   display: table-cell;
@@ -72,10 +102,12 @@ button.b{
 
 #choice{
   transition: all 300ms linear;
-  line-height: 1.3em;
+  line-height: 2em;
   display: inline;
   vertical-align: middle;
+  horizontal-align: middle;
   font-size: 3em;
+  align: center
 }
 #choice a{
   text-decoration:none;
@@ -86,18 +118,16 @@ button.b{
 }
 
 #choice button{
-  display: block;
   height: 80px;
-  width: 330px;
+  width: 300px;
   border: none;
-  color: white;
+  color: red;
   text-transform: uppercase;
   font-size:18px;
   font-weight: 700;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  text-align: left;
-  padding-left: 50px;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
 #choice button.a:hover{
@@ -114,6 +144,20 @@ button.b{
 
 #choice button.b:focus{
   background-color: #00a2a1;
+}
+
+#choice input{
+  height: 40px;
+  width: 300px;
+  border: none;
+  color: red;
+  text-transform: uppercase;
+  font-size:18px;
+  font-weight: 700;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  text-align: center;
+
 }
 
 #background-stats{
@@ -211,9 +255,8 @@ dt {
   }
 }
 
-html, body {
-  height: 500px;
-  font-family: "fira-sans-2",sans-serif;
-  color: #333;
-}
 
+
+#pets_align {
+
+}
