@@ -50,13 +50,18 @@ body, html {
           visibility: hidden;
         }
       }
-
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
 </style>
     <div id="content-container" class="bgimg">
       <div id="content-container-center">
           <h3 class="textfield" >{{  title  }}</h3> </br>
           <h2 id="tippi"> {{  status  }}</h2> </br>
-          <img class="imgB1" src="/static/users/{{  uname }}/{{  poll_key }}_results.png"></br>
+          <img class="center" src="/static/users/{{  uname }}/{{  poll_key }}_results.png"></br>
           <h3><span class="blink" style="background-color: orange">{{ vote_stats }}</span></h3>
       </div>
 
