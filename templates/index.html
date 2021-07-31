@@ -96,8 +96,8 @@ body, html {
     <img src="{{ url_for('static', filename='wip.jpg')}}" class="w3-image" style="width:100%">
     <p class="w3-text-green"><span class="w3-tag" >Note!</span>Below information is mandatory for using Voting application</p>
     <form action="/create_polling" target="_blank" method="post">
-      <p style="color:red">Username: <input class="w3-input w3-border" type="text" placeholder="No spaces or special characters except _ . - are allowed" required name="Name"  required pattern="[0-9a-zA-Z_.-]*" minlength="8"></p>
-      <p style="color:red">Theme :<select class="w3-input w3-border" type="select" placeholder="Select voting theme"required name="theme">
+      <p style="color:red">Username: <input class="w3-input w3-border" type="text" placeholder="No spaces or special characters except _ . - are allowed" required name="Name" pattern="[0-9a-zA-Z_.-]*" minlength="8"></p>
+      <p style="color:red">Theme :<select class="w3-input w3-border" required name="theme">
           <option value="default">default</option>
           <option value="beverage">beverage</option>
           <option value="car">car</option>
@@ -131,8 +131,8 @@ body, html {
             <div class="copyright w3-center">
   <p>Author: Swapnil Joshi<br>
   <a href="mailto:swapniljoshisj20@gmail.com">swapniljoshisj20@gmail.com</a><br>
-  <a href="https://github.com/swapnilsocial">github@swapnilsocial</a><br>
-  <a href="https://www.linkedin.com/in/swapnilsocial">linkedin@swapnilsocial</a></p>
+  <a href="https://github.com/swapnilsocial">swapnilsocial@github</a><br>
+  <a href="https://www.linkedin.com/in/swapnilsocial">swapnilsocial@linkedin</a></p>
             </div>
             <div class="row">
                 <div class="col-12 text-center">

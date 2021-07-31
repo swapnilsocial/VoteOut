@@ -118,6 +118,9 @@ def dynamic_vote(uname, poll_key, title):
     # create a pie chart here
     result_file = os.path.join(USER_FOLDER + "/static/users/" + uname, poll_key + "_results.png")
     print(all_values, all_keys)
+    if max(all_values) < 21:
+        new_list = range(0, max(all_values)+2)
+        plt.yticks(new_list)
     x = np.array(all_keys)
     y = np.array(all_values)
     plt.bar(x, y)
