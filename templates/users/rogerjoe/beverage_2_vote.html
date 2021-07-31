@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-<title>POLLING</title>
+<title>VOTE IT</title>
 <base href="/index.html">
 <meta name = "viewport" content = "width=device-width, initial-scale = 1.0">
 <meta name="keywords" content="docker-compose, docker, stack">
@@ -16,8 +16,7 @@
             window.history.forward();
         }
     </script>
-  <body onload="noBack();" onpageshow="if (event.persisted) noBack();" onunload="">
-<style>
+  <style>
 body, html {
   height: 100%;
   font-family: 'Josefin Sans', sans-serif;
@@ -35,17 +34,23 @@ body, html {
   display: none;
 }
 </style>
+  <body onload="noBack();" onpageshow="if (event.persisted) noBack();" onunload="">
+
 
     <div id="content-container" class="bgimg">
       <div id="content-container-center">
-        <h1 style="color: red">{{  user_status }} </h1><br>
           <h3 class="textfield" >{{  title  }}</h3>
-    <form id="choice" method="post" action="/{{  uname  }}/{{ poll_key }}/{{  title  }}/votenow">
-    <span class="textfield" >Contestant 1</span> <input type="text" placeholder="type here" required name="text_title1"></br> <span class="textfield" >Contestant 2</span> <input type="text" placeholder="type here" required name="text_title2"></br> <span class="textfield" >Contestant 3</span> <input type="text" placeholder="type here" required name="text_title3"></br> 
+    <form id="choice" method="post" action="/{{  uname  }}/{{ poll_key }}/{{  title  }}/vote">
+    <button value="tea" type="submit" name="elector" class="a" >tea</button></br>
+    <button value="coFFee" type="submit" name="elector" class="a" >coFFee</button></br>
+    
  <!--         <input type="file" id="myFile" name="filename"><br/><br/><br/><br/> -->
-      <button value="{{  poll_key  }}" type="submit" name="pet" class="a" style="color: blue">CREATE POLLING</button>
     </form>
-
+                  <br/><br/><br/><br/>
+        <div id="tip">
+          (Tip: you can vote just once)
+            {{ url }}
+        </div>
         <div id="hostname">
  <!--         Processed by container ID {{hostname}} -->
         </div>
@@ -56,10 +61,10 @@ body, html {
      <footer class="footer footer-default">
         <div class="container">
             <div class="copyright w3-center">
-  <p>Author: Swapnil Joshi<br>
+    <p>Author: Swapnil Joshi<br>
   <a href="mailto:swapniljoshisj20@gmail.com">swapniljoshisj20@gmail.com</a><br>
-  <a href="https://github.com/swapnilsocial">github@swapnilsocial</a><br>
-  <a href="https://www.linkedin.com/in/swapnilsocial">linkedin@swapnilsocial</a></p>
+  <a href="https://github.com/swapnilsocial">swapnilsocial@github</a><br>
+  <a href="https://www.linkedin.com/in/swapnilsocial">swapnilsocial@linkedin</a></p>
             </div>
             <div class="row">
                 <div class="col-12 text-center">

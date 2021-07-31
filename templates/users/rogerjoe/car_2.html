@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-<title>VOTE IT</title>
+<title>POLLING</title>
 <base href="/index.html">
 <meta name = "viewport" content = "width=device-width, initial-scale = 1.0">
 <meta name="keywords" content="docker-compose, docker, stack">
@@ -34,23 +34,19 @@ body, html {
   display: none;
 }
 </style>
-  <body onload="noBack();" onpageshow="if (event.persisted) noBack();" onunload="">
 
+  <body onload="noBack();" onpageshow="if (event.persisted) noBack();" onunload="">
 
     <div id="content-container" class="bgimg">
       <div id="content-container-center">
+        <h1 style="color: red">{{  user_status }} </h1><br>
           <h3 class="textfield" >{{  title  }}</h3>
-    <form id="choice" method="post" action="/{{  uname  }}/{{ poll_key }}/{{  title  }}/vote">
-    <button value="audi" type="submit" name="elector" class="a" >audi</button></br>
-    <button value="FERRARI" type="submit" name="elector" class="a" >FERRARI</button></br>
-    
+    <form id="choice" method="post" action="/{{  uname  }}/{{ poll_key }}/{{  title  }}/votenow">
+    <span class="textfield" >Contestant 1</span> <input type="text" placeholder="type here" required name="text_title1"></br> <span class="textfield" >Contestant 2</span> <input type="text" placeholder="type here" required name="text_title2"></br> 
  <!--         <input type="file" id="myFile" name="filename"><br/><br/><br/><br/> -->
+      <button value="{{  poll_key  }}" type="submit" name="pet" class="a" style="color: blue">CREATE POLLING</button>
     </form>
-                  <br/><br/><br/><br/>
-        <div id="tip">
-          (Tip: you can vote just once)
-            {{ url }}
-        </div>
+
         <div id="hostname">
  <!--         Processed by container ID {{hostname}} -->
         </div>

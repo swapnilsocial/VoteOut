@@ -83,7 +83,7 @@ def vote_now(uname, poll_key, title):
         # load data in json
         vfs.update_votes_dynamic(uname, poll_key, user_dictionary)
         vfs.dynamic_vote_template(poll_key, uname, list_con)
-        url = 'Share url so others can vote - http://192.168.1.9:8025/' + uname + '/' + poll_key + '/' + title + '/votenow'
+        url = 'Share url so others can vote - http://swapnilsocial.pythonanywhere.com/' + uname + '/' + poll_key + '/' + title + '/votenow'
         template_name = vfs.dynamic_vote_template(poll_key, uname, list_con)
         page = '/users/' + uname + '/' + template_name
         return render_template(page, poll_key=poll_key, title=title, theme=theme, uname=uname, url=url)
@@ -99,8 +99,11 @@ def dynamic_vote(uname, poll_key, title):
     result = vfs.fetch_page_stats_from_json(PAGE_HOME)
     updated_result = {}
     all_values = []
+    all_keys_upper = []
     all_keys = list(result.keys())
     dic_len = len(all_keys)
+    for i in range(0,dic_len):
+        all_keys_upper.append(all_keys[i].upper())
     # check voter stats
     if vfs.ip_check_add(uname, poll_key, ip_address) == 'no':
         status = "You have voted once already"
@@ -117,11 +120,11 @@ def dynamic_vote(uname, poll_key, title):
     vote_stats = ' votes and '.join("{}: {}".format(k, v) for k, v in result.items()) + ' votes'
     # create a pie chart here
     result_file = os.path.join(USER_FOLDER + "/static/users/" + uname, poll_key + "_results.png")
-    print(all_values, all_keys)
+    print(all_values, all_keys_upper)
     if max(all_values) < 21:
         new_list = range(0, max(all_values)+2)
         plt.yticks(new_list)
-    x = np.array(all_keys)
+    x = np.array(all_keys_upper)
     y = np.array(all_values)
     plt.bar(x, y)
     plt.savefig(result_file)
